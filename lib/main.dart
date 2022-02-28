@@ -68,12 +68,12 @@ class _ChartAppState extends State<ChartApp> {
                 title: ChartTitle(text: 'Customized by axisLabelFormatter'),
                 primaryXAxis: DateTimeAxis(
                   axisLabelFormatter: (axisLabelRenderArgs) {
-                    return ChartAxisLabel(
-                        DateFormat('EEEE').format(
-                            DateTime.fromMillisecondsSinceEpoch(
-                                axisLabelRenderArgs.value.toInt())),
-                        const TextStyle(
-                            color: Colors.teal, fontWeight: FontWeight.bold));
+                    final String text = DateFormat('EEEE').format(
+                        DateTime.fromMillisecondsSinceEpoch(
+                            axisLabelRenderArgs.value.toInt()));
+                    const TextStyle style = TextStyle(
+                        color: Colors.teal, fontWeight: FontWeight.bold);
+                    return ChartAxisLabel(text, style);
                   },
                 ),
                 series: <ChartSeries<SeriesData, DateTime>>[
